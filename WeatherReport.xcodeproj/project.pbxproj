@@ -13,6 +13,7 @@
 		4C0A5BAF2588DCE800291BE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0A5BAD2588DCE800291BE1 /* Main.storyboard */; };
 		4C0A5BB12588DCE800291BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C0A5BB02588DCE800291BE1 /* Assets.xcassets */; };
 		4C0A5BB42588DCE800291BE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0A5BB22588DCE800291BE1 /* LaunchScreen.storyboard */; };
+		4C0A5BBE2588DD5A00291BE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0A5BBD2588DD5A00291BE1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4C0A5BB02588DCE800291BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C0A5BB32588DCE800291BE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C0A5BB52588DCE800291BE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C0A5BBD2588DD5A00291BE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0A5BBE2588DD5A00291BE1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				4C0A5BA62588DCE800291BE1 /* WeatherReport */,
 				4C0A5BA52588DCE800291BE1 /* Products */,
+				4C0A5BBC2588DD5A00291BE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +69,14 @@
 				4C0A5BB52588DCE800291BE1 /* Info.plist */,
 			);
 			path = WeatherReport;
+			sourceTree = "<group>";
+		};
+		4C0A5BBC2588DD5A00291BE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C0A5BBD2588DD5A00291BE1 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
