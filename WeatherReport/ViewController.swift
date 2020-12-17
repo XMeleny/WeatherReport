@@ -22,7 +22,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }()
     
     var currentAnnotation:MyAnnotation?
-    var currentCity:String?
     var currentAdcode:String?
     
     override func viewDidLoad() {
@@ -106,8 +105,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     
                     self.currentAdcode = adcode
                 }
-                
-              
             }
         }
         task.resume()
