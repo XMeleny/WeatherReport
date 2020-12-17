@@ -94,14 +94,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     realCity = provice
                 }
                 
-                self.updateCityLabelInMainThread(city: realCity!)
+                if adcode != self.currentAdcode{
+                    self.updateCityLabelInMainThread(city: realCity!)
+                    
+                    self.updataAnnotationInMainThread(
+                        coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                        city: realCity!,
+                        district: district ?? ""
+                    )
+                    self.getWeatherInformation(adcode: adcode)
+                    
+                    self.currentAdcode = adcode
+                }
                 
-                self.updataAnnotationInMainThread(
-                    coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
-                    city: realCity!,
-                    district: district!
-                )
-                self.getWeatherInformation(adcode: adcode)
+              
             }
         }
         task.resume()
