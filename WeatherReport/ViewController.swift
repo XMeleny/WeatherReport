@@ -15,6 +15,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
     
+    @IBAction func mapViewTap(_ sender: UITapGestureRecognizer) {
+        let point = sender.location(in: mapView)
+        let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+        
+        getCityInformation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    }
+    
     var locationManager:CLLocationManager!
     
     lazy var geoCoder: CLGeocoder = {
@@ -61,13 +68,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         print("error.localizedDescription = \(error.localizedDescription)")
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        let point = touches.first?.location(in: mapView)
-        let coordinate = mapView.convert(point!, toCoordinateFrom: mapView)
-        
-        getCityInformation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-    }
-    
     let SCHEME_AND_HOST = "https://restapi.amap.com"
     let PATH_CITY_INFORMATION = "/v3/geocode/regeo"
     let PATH_WEATHER_INFORMATION = "/v3/weather/weatherInfo"
@@ -77,6 +77,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func getCityInformation(latitude:Double, longitude:Double){
         let url = URL(string: "\(SCHEME_AND_HOST)\(PATH_CITY_INFORMATION)?\(PARAM_KEY)&location=\(longitude),\(latitude)")!
         let task = URLSession.shared.dataTask(with: url){ (data,response,error) in
+            if data == nil {
+                return
+            }
             let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]
             let info = json?["info"] as? String
             
@@ -116,6 +119,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let url = URL(string: "\(SCHEME_AND_HOST)\(PATH_WEATHER_INFORMATION)?\(PARAM_KEY)&\(PARAM_EXTENSIONS)&city=\(adcode)")!
         
         let task = URLSession.shared.dataTask(with: url){ (data,response,error) in
+            if data == nil {
+                return
+            }
+            
             let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]
             
             let infocode = json!["infocode"] as? String
